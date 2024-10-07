@@ -23,6 +23,8 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 import { AiOutlineScan } from "react-icons/ai";
 import news from '../../images/news.svg';
 import { MdOutlineLogout } from "react-icons/md";
+import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -88,6 +90,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft() {
     const theme = useTheme();
     const [open, setOpen] = useState(true);
+    const navigate = useNavigate();
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -96,6 +99,12 @@ export default function PersistentDrawerLeft() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+    const handleLogout = () => {
+        toast.success("Logged out successfully", {
+            position: "top-center"
+        })
+        setTimeout(() => navigate('/log'), 3000)
+    }
 
     const sideIcons = [
         <FaRegUser style={{ height: "20px", width: "20px", color: "#a2a2a2" }} />,
@@ -108,6 +117,7 @@ export default function PersistentDrawerLeft() {
 
     return (
         <div className='dash-container'>
+            <ToastContainer />
             <Box sx={{ display: 'flex' }}>
                 <AppBar position="fixed" open={open}>
                     <Toolbar style={{ backgroundColor: "#171717", boxShadow: "none" }}>
@@ -167,45 +177,45 @@ export default function PersistentDrawerLeft() {
                     <br />
                     <button style={{ display: "flex", alignItems: "center", justifyContent: "center", marginRight: "70px", backgroundColor: "#1D1D1D", height: "40px", marginLeft: "30px", outline: "none", boxShadow: "none", border: "none" }}>
                         <MdOutlineLogout style={{ height: "20px", width: "20px", color: "#f4c727", marginRight: "5px" }} />
-                        <text style={{ color: "#949494", cursor: "pointer" }}>Logout</text>
+                        <text style={{ color: "#949494", cursor: "pointer" }} onClick={handleLogout}>Logout</text>
                     </button>
                 </Drawer>
                 <Main open={open}>
-                <div className='col'>
-                    <div class="col card card-style" style={{ width: "18rem" }}>
-                        <div class="card-body">
-                            <div style={{ border: "2px solid #292929", borderRadius: "100%", backgroundColor: "#292929", height: "52px", width: "52px", textAlign: "center" }}>
-                                <img src={arena} alt='' height="50px" width="50px" />
+                    <div className='card-container'>
+                        <div className="md-3 card card-style" style={{ width: "18rem" }}>
+                            <div className="card-body">
+                                <div style={{ border: "2px solid #292929", borderRadius: "100%", backgroundColor: "#292929", height: "52px", width: "52px", textAlign: "center" }}>
+                                    <img src={arena} alt='' height="50px" width="50px" />
+                                </div>
+                                <div style={{ fontSize: "25px" }}>
+                                    <p className="card-text" style={{ marginLeft: "20px" }}>Arena</p>
+                                    <p style={{ color: "#f4c727", fontWeight: "700", marginLeft: "20px" }}>14</p>
+                                </div>
                             </div>
-                            <div style={{ fontSize: "25px" }}>
-                                <p class="card-text" style={{ marginLeft: "20px" }}>Arena</p>
-                                <p style={{ color: "#f4c727", fontWeight: "700", marginLeft: "20px" }}>14</p>
+                        </div>
+                        <div className="md-3 card card-style" style={{ width: "18rem" }}>
+                            <div className="card-body">
+                                <div style={{ border: "2px solid #292929", borderRadius: "100%", backgroundColor: "#292929", height: "62px", width: "62px", textAlign: "center" }}>
+                                    <img src={athelet} alt='' height="50px" width="50px" />
+                                </div>
+                                <div style={{ fontSize: "25px" }}>
+                                    <p className="card-text" style={{ marginLeft: "20px" }}>Athelets</p>
+                                    <p style={{ color: "#f4c727", fontWeight: "700", marginLeft: "20px" }}>16</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="card card-style" style={{ width: "18rem" }}>
+                            <div className="card-body">
+                                <div style={{ border: "2px solid #292929", borderRadius: "100%", backgroundColor: "#292929", height: "60px", width: "60px", textAlign: "center" }}>
+                                    <img src={barchart} alt='' height="55px" width="40px" />
+                                </div>
+                                <div style={{ fontSize: "25px" }}>
+                                    <p className="card-text" style={{ marginLeft: "10px" }}>Total Revenue</p>
+                                    <p style={{ color: "#f4c727", fontWeight: "700", marginLeft: "10px" }}>$7525566</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col card card-style" style={{ width: "18rem" }}>
-                        <div class="card-body">
-                            <div style={{ border: "2px solid #292929", borderRadius: "100%", backgroundColor: "#292929", height: "62px", width: "62px", textAlign: "center" }}>
-                                <img src={athelet} alt='' height="50px" width="50px" />
-                            </div>
-                            <div style={{ fontSize: "25px" }}>
-                                <p class="card-text" style={{ marginLeft: "20px" }}>Athelets</p>
-                                <p style={{ color: "#f4c727", fontWeight: "700", marginLeft: "20px" }}>16</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col card card-style" style={{ width: "18rem" }}>
-                        <div class="card-body">
-                            <div style={{ border: "2px solid #292929", borderRadius: "100%", backgroundColor: "#292929", height: "60px", width: "60px", textAlign: "center" }}>
-                                <img src={barchart} alt='' height="55px" width="40px" />
-                            </div>
-                            <div style={{ fontSize: "25px" }}>
-                                <p class="card-text" style={{ marginLeft: "10px" }}>Total Revenue</p>
-                                <p style={{ color: "#f4c727", fontWeight: "700", marginLeft: "10px" }}>$7525566</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 </Main>
             </Box>
         </div>

@@ -9,7 +9,9 @@
 
 .card-style {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     margin-top: 50px;
     margin-left: 15px;
