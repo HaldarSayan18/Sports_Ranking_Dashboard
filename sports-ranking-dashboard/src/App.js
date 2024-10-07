@@ -1,13 +1,11 @@
 // import logo from './logo.svg';
-import Footer from './components/common/Footer';
-import Header from './components/common/Header';
+import Registration from './components/register_login/Registration';
 import './components/styles/App.css';
 
 function App() {
   return (
     <>
-    <Header/>
-    <Footer/>
+    <Registration/>
     </>
   );
 }
