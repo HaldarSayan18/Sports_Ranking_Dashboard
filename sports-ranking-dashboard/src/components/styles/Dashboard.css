@@ -1,0 +1,29 @@
+.dash-container {
+    background-image: url("../../images/bgtrain.jpg");
+    background-position: center;
+    background-clip: border-box;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+
+.card-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-left: 15px;
+    margin-right: 25px;
+    height: 130px;
+    border-radius: 15px;
+    background-color: #ffffff35;
+    color: white;
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin-left: 20px;
+    /* text-align: center; */
+}
