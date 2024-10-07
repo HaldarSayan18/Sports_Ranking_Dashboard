@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "../styles/Registration.css";
 import sportsLogo from "../../images/sport_ranking_logo.svg"
 import axios from 'axios'
@@ -30,7 +30,8 @@ export const registrationScema = yup.object({
 
 const Registration = () => {
     const navigate = useNavigate();
-    const [initialValues, setInitialValues] = useState({
+    const [regMsg, setRegMsg] = useState("");
+    const initialValues = {
         'name': '',
         'display': '',
         'phone': '',
@@ -41,33 +42,54 @@ const Registration = () => {
         'city': '',
         'address': '',
         'check': false,
-    })
+    }
     const { values, touched, errors, handleSubmit, handleBlur, handleChange } = useFormik({
         initialValues: initialValues,
         validationSchema: registrationScema,
         onSubmit: async (values) => {
             // values.preventDefault(); //prevents page reload
-            try {
-                const demo = await axios.post(regURL, initialValues)
-                if (demo.data) {
-                    setInitialValues(demo.data)
-                    toast.success("Registration successfull")
-                    console.log(demo.data);
-                    navigate('/log')
-                }
-                localStorage.setItem("Registration_data: ", JSON.stringify(values))
+            const data = {
+                "name": values.name,
+                "display_name": values.display,
+                "email": values.email,
+                "phone": values.phone,
+                "password": values.password,
+                "confirm_password": values.confirmpassword,
+                "state": values.state,
+                "city": values.city,
+                "address": values.address,
+                "language":"en"
             }
-            catch (error) {
-                console.log("Error occured is: ", error);
-            }
+            console.log(data);
+
+            axios.post(regURL, data)
+                .then(response => {
+                    console.log(response.data);
+                    if (response.data.success) {
+                        setRegMsg(response.data.message);
+                        toast.success("User Registered successful");
+                        setTimeout(()=>navigate('/log'), 3000);
+                    }
+                    else {
+                        toast.error(response.data.message);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         }
     });
-    useEffect(() => {
-        const savedData = localStorage.getItem('Registration_data');
-        if (savedData) {
-            setInitialValues(JSON.parse(savedData)); // Pre-fill the form with stored data
-        }
-    }, [])
+    // handleChange = (e) => {
+    //     setInitialValues({
+    //         ...initialValues, [e.target.name]: e.target.value
+    //     })
+    // };
+    // useEffect(() => {
+    //     const savedData = localStorage.getItem('Registration_data');
+    //     if (savedData) {
+    //         setInitialValues(JSON.parse(savedData)); // Pre-fill the form with stored data
+    //     }
+    // }, [])
     // const handleRegister = (e) => {
     //     e.preventDefault();
     //     if(values.check){
