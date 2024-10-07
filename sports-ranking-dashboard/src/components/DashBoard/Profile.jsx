@@ -23,13 +23,15 @@ import { AiOutlineScan } from "react-icons/ai";
 import news from '../../images/news.svg';
 import { MdOutlineLogout } from "react-icons/md";
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header2 from '../common/Header2.jsx';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { profileUpdateURL } from '../API_fetching/APIs.jsx';
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import camera from '../../images/camera.svg';
+import demoImg from '../../images/demoImg.png'
 
 const drawerWidth = 240;
 
@@ -110,6 +112,7 @@ export default function Profile() {
     const theme = useTheme();
     const navigate = useNavigate();
     const [open, setOpen] = useState(true);
+    const [image, setImage] = useState(demoImg);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -167,8 +170,20 @@ export default function Profile() {
         }
     }, [])
 
+    const onfile = (event) => {
+        console.log("image show: ", event.target.files[0])
+        setImage(URL.createObjectURL(event.target.files[0]))
+    }
+    const handleLogout = () => {
+        toast.success("Logged out successfully", {
+            position:"top-center"
+        })
+        setTimeout(() => navigate('/log'), 3000)
+    }
+
     return (
         <div className='dash-container'>
+            <ToastContainer/>
             <Box sx={{ display: 'flex' }}>
                 <AppBar position="fixed" open={open}>
                     <Toolbar style={{ backgroundColor: "#171717", boxShadow: "none" }}>
@@ -228,12 +243,27 @@ export default function Profile() {
                     <br />
                     <button style={{ display: "flex", alignItems: "center", justifyContent: "center", marginRight: "70px", backgroundColor: "#1D1D1D", height: "40px", marginLeft: "30px", outline: "none", boxShadow: "none", border: "none" }}>
                         <MdOutlineLogout style={{ height: "20px", width: "20px", color: "#f4c727", marginRight: "5px" }} />
-                        <text style={{ color: "#949494", cursor: "pointer" }}>Logout</text>
+                        <text style={{ color: "#949494", cursor: "pointer" }} onClick={handleLogout}>Logout</text>
                     </button>
                 </Drawer>
                 <Main open={open}>
                     <div className="reg-card profile-card">
-                        <p></p>
+                        <div className="browseimg">
+                            <div className="upld">
+                                <label htmlFor="upload-button" className="uploadBtn">
+                                    <img src={image} alt="dummy" width="300" height="300" />
+                                    <div style={{borderRadius:"100%", backgroundColor:"yellow", height:"40px", width:"60px"}}><img src={camera} alt='' height="15px" width="15px"/></div>
+                                </label>
+                                <input
+                                    type="file"
+                                    accept='image/png, image/gif, image/jpeg, image/jpg, image/svg'
+                                    id="upload-button"
+                                    style={{ display: "none" }}
+                                    onChange={onfile}
+                                />
+                                <br />
+                            </div>
+                        </div>
                         <div className="profile-card-body">
                             <form className='form' onSubmit={handleSubmit}>
                                 <div className="col mb-3 form-input-field">
@@ -325,7 +355,7 @@ export default function Profile() {
                                 <button type="submit" className="btn btn-primary reg-btn" style={{ borderRadius: "20px" }} checked={values.check}>Save</button>
                             </form>
                         </div>
-                        <p style={{ marginRight: "87%" }}><FaLongArrowAltLeft /> Back</p>
+                        <p style={{ marginRight: "87%" }}><FaLongArrowAltLeft /><Link to="#" style={{ textDecoration: "underline", color: "white", marginLeft: "5px" }}>Back</Link></p>
                     </div>
                 </Main>
             </Box>

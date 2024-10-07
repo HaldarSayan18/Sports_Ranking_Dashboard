@@ -1,10 +1,11 @@
 .profile-card {
     background-color: rgba(230, 228, 228, 0.193);
+    margin-top: 80px;
 }
 
 .profile-card-body {
     /* display: none; */
-    width: 75%;
+    width: 80%;
     /* justify-content: center; */
 }
 
@@ -19,7 +20,43 @@
     color: white;
     font-size: 15px;
     margin-bottom: 10px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     width: 100%;
     /* display: none; */
+}
+
+.browseimg {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.upld {
+    display: flex;
+    align-items: center;
+    margin-top: -50px;
+}
+
+.browseimg .uploadBtn {
+    margin: 0;
+    position: relative;
+    background-color: #d9d9d9;
+}
+
+.uploadBtn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* / border-radius: 100px;/ */
+}
+
+.uploadBtn {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    border: 1px dashed #ccc;
 }
