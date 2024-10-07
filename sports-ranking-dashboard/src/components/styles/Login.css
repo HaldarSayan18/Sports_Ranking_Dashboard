@@ -20,7 +20,7 @@ body {
     align-items: center;
     border: none;
     box-shadow: none;
-    height: 520px;
+    height: 100%;
     width: 580px;
 }
 
@@ -37,6 +37,8 @@ body {
     border-radius: 10px;
     width: 28%;
     padding: 10px;
+    margin-top: -600px;
+    margin-left: 56%;
 }
 
 
@@ -93,7 +95,7 @@ body {
     height:45px;
     outline: none;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     cursor: pointer;
 }
 
@@ -131,4 +133,10 @@ body {
 .inputDiv input::placeholder {
     color: rgb(150, 142, 142);
     font-size: 16px;
+}
+
+.password-input, .email-input {
+    /* display: none; */
+    margin-top: 20px;
+    width: 350px;
 }
