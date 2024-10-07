@@ -14,29 +14,28 @@ body {
     /* background-color: black; */
 }
 
-.bgImg-container .bg2 {
+.bg2 {
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     box-shadow: none;
-    height: 600px;
-    width: 630px;
+    height: 520px;
+    width: 580px;
 }
 
 .log-card {
     /* display: none; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.324);
     /* border: 5px solid; */
     color: white;
     margin-top: 20px;
-    margin-left: 150px;
+    margin-left: 10px;
     border-radius: 10px;
-    width: 60%;
+    width: 28%;
     padding: 10px;
 }
 
@@ -80,6 +79,10 @@ body {
     cursor: pointer;
 }
 
+.error-message {
+    color: red;
+}
+
 .log-btn,
 .log-btn:hover {
     color: black;
@@ -91,6 +94,7 @@ body {
     outline: none;
     width: 100%;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 
