@@ -25,7 +25,7 @@ const Typodiv = styled(Typography)`
     display: flex;
     justify-content:center;
     align-items:center;
-    color:#ffd232;
+    color:white;
     ${'' /* height:40px; */}
     width:100px;
     margin-top:-5px;
