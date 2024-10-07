@@ -6,7 +6,7 @@ import { styled } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 const Nav = styled(AppBar)`
-    background:black;
+    background:transparent;
     height:50px;
     border:none;
     box-shadow:none;
