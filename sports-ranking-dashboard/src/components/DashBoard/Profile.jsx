@@ -352,10 +352,12 @@ export default function Profile() {
                                     </span>
                                     {touched.summary && errors.summary ? <div className="error">{errors.summary}</div> : null}
                                 </div>
-                                <button type="submit" className="btn btn-primary reg-btn" style={{ borderRadius: "20px" }} checked={values.check}>Save</button>
+                                <button type="submit" className="btn btn-primary reg-btn" style={{ borderRadius: "20px" }} checked={values.check}onClick={()=>{
+                                   (values.check) ? toast.success("Updated and saved your data") : toast.warning("Edit to update")
+                                }}>Save</button>
                             </form>
                         </div>
-                        <p style={{ marginRight: "87%" }}><FaLongArrowAltLeft /><Link to="#" style={{ textDecoration: "underline", color: "white", marginLeft: "5px" }}>Back</Link></p>
+                        <p style={{ marginRight: "87%" }}><FaLongArrowAltLeft /><Link to="/dash" style={{ textDecoration: "underline", color: "white", marginLeft: "5px" }}>Back</Link></p>
                     </div>
                 </Main>
             </Box>

@@ -82,11 +82,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
 }));
-
 // const handleLogout=()=>{
-//     setLoggedUser(null);
-// }
-
+    //     setLoggedUser(null);
+    // }
+    
 export default function PersistentDrawerLeft() {
     const theme = useTheme();
     const [open, setOpen] = useState(true);
@@ -107,7 +106,9 @@ export default function PersistentDrawerLeft() {
     }
 
     const sideIcons = [
-        <FaRegUser style={{ height: "20px", width: "20px", color: "#a2a2a2" }} />,
+        <FaRegUser style={{ height: "20px", width: "20px", color: "#a2a2a2" }} onClick={() => {
+            navigate('/profile')
+        }}/>,
         <img src={arena} alt='' style={{ height: "20px", width: "20px", color: "#a2a2a2" }} />,
         <img src={athelet} alt='' style={{ height: "20px", width: "20px", color: "#a2a2a2" }} />,
         <MdOutlineCalendarMonth style={{ height: "20px", width: "20px", color: "#a2a2a2" }} />,
